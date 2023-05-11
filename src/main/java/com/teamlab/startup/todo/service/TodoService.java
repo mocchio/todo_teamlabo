@@ -1,6 +1,7 @@
 package com.teamlab.startup.todo.service;
 
 import com.teamlab.startup.todo.entity.Todo;
+import com.teamlab.startup.todo.form.TodoForm;
 import com.teamlab.startup.todo.repository.TodoRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -22,5 +23,14 @@ public class TodoService {
      */
     public List<Todo> searchAllTodo() {
         return todoRepository.findAll();
+    }
+
+    /**
+     * Todo情報を保存する
+     *
+     * @param todoForm
+     */
+    public void saveTodo(TodoForm todoForm) {
+        todoRepository.save(Todo.of(todoForm));
     }
 }
