@@ -5,7 +5,28 @@
     <title>Todoリスト課題トップページ</title>
 </head>
 <body>
+
 <div>
+    <div>
+        ■入力項目
+        <form action="/register" method="post">
+            <table>
+                <tr>
+                    <td>タイトル</td>
+                    <td><input type="text" name="title"></td>
+                </tr>
+                <tr>
+                    <td>期日</td>
+                    <td><input type="date" name="deadline"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" value="登録"></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    ■表示項目
     <table>
         <tr>
             <th>タイトル</th>
@@ -22,5 +43,6 @@
         </tr>
     </table>
 </div>
+
 </body>
 </html>
