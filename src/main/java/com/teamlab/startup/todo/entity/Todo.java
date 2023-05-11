@@ -1,5 +1,6 @@
 package com.teamlab.startup.todo.entity;
 
+import com.teamlab.startup.todo.form.TodoForm;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,4 +27,11 @@ public class Todo {
 
     @CreationTimestamp private LocalDateTime createTime;
     @UpdateTimestamp private LocalDateTime updateTime;
+
+    public static Todo of(TodoForm todoForm) {
+        Todo todo = new Todo();
+        todo.setTitle(todoForm.getTitle());
+        todo.setDeadline(todoForm.getDeadline());
+        return todo;
+    }
 }
