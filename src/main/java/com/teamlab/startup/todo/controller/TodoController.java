@@ -1,5 +1,6 @@
 package com.teamlab.startup.todo.controller;
 
+import com.teamlab.startup.todo.form.SearchForm;
 import com.teamlab.startup.todo.form.TodoForm;
 import com.teamlab.startup.todo.service.TodoService;
 import lombok.RequiredArgsConstructor;
@@ -35,4 +36,26 @@ public class TodoController {
         todoService.saveTodo(todoForm);
         return "redirect:/";
     }
+
+    /**
+     * SEARCH画面の表示
+     *
+     * @return
+     */
+    @GetMapping("/search")
+    public String search(Model model) {
+        model.addAttribute("searchForm", new SearchForm());
+        return "search";
+    }
+
+
+    /**
+     * RESULT処理
+     *
+     * @return
+     */
+//    @GetMapping("/search/result")
+//    public String result(String title, Model model) {
+//
+//    }
 }
