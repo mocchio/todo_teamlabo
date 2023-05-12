@@ -5,8 +5,24 @@
     <title>Result</title>
 </head>
 <body>
-<td>
-    <span th:if="${#lists.isEmpty(todoList)}>検索結果はありませんでした</span>
-</td>
+<a href="/" th:href="@{/search}">検索ページ</a>
+  <table>
+      <tr>
+          <th>タイトル</th>
+          <th>期日</th>
+          <th>ステータス</th>
+      </tr>
+      <tr th:each="todo : ${todoList}" th:object="${todo}">
+        <td th:text="*{title}"></td>
+        <td th:text="${#temporals.format(todo.deadline, 'yyyy年MM月dd日')}"></td>
+          <td>
+              <span th:if="${todo.status}">完了</span>
+              <span th:unless="${todo.status}">未完了</span>
+          </td>
+<!--          <td>-->
+<!--            <span th:if="${#lists.isEmpty(todoList)}>検索結果はありませんでした</span>-->
+<!--          </td>-->
+      </tr>
+  </table>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package com.teamlab.startup.todo.controller;
 
+import com.teamlab.startup.todo.entity.Todo;
 import com.teamlab.startup.todo.form.SearchForm;
 import com.teamlab.startup.todo.form.TodoForm;
 import com.teamlab.startup.todo.service.TodoService;
@@ -8,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 /** Todo Contoller */
 @Controller
@@ -50,12 +53,22 @@ public class TodoController {
 
 
     /**
-     * RESULT処理
+     * RESULT画面の表示
      *
      * @return
      */
-//    @GetMapping("/search/result")
-//    public String result(String title, Model model) {
-//
-//    }
+    @GetMapping("/search/result")
+    public String result(String title, Model model) {
+        List<Todo> todoList;
+//        List<Todo> lists;
+        if (title != null && !title.isEmpty()) {
+            todoList = todoService.searchTodoByTitle(title);
+        } else {
+            todoList = todoService.searchAllTodo();
+        }
+//        lists = todoService.searchAllTodo();
+//        model.addAttribute("lists", lists);
+        model.addAttribute("todoList", todoList);
+        return "result";
+    }
 }
